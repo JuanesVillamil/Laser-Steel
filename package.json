@@ -1,0 +1,12 @@
+{
+  "name": "laser-steel-sas-web",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node build/build.js",
+    "dev": "node build/build.js && npx serve dist -l 8790"
+  },
+  "dependencies": {
+    "resend": "^4.0.1"
+  }
+}
