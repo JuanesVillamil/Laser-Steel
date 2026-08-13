@@ -52,18 +52,21 @@ export async function POST(request) {
       });
     }
 
-    const file = formData.get("archivo");
+    const files = formData.getAll("archivo").filter((f) => f && typeof f === "object" && f.size > 0);
     const attachments = [];
 
-    if (file && typeof file === "object" && file.size > 0) {
-      if (file.size > MAX_FILE_BYTES) {
-        return new Response(JSON.stringify({ error: "El archivo adjunto supera el límite de 4 MB." }), {
+    if (files.length) {
+      const totalBytes = files.reduce((sum, f) => sum + f.size, 0);
+      if (totalBytes > MAX_FILE_BYTES) {
+        return new Response(JSON.stringify({ error: "Los archivos adjuntos superan el límite de 4 MB en total." }), {
           status: 400,
           headers: { "Content-Type": "application/json" },
         });
       }
-      const buffer = Buffer.from(await file.arrayBuffer());
-      attachments.push({ filename: file.name, content: buffer });
+      for (const f of files) {
+        const buffer = Buffer.from(await f.arrayBuffer());
+        attachments.push({ filename: f.name, content: buffer });
+      }
     }
 
     const rows = [
@@ -88,7 +91,7 @@ export async function POST(request) {
         <h2 style="color:#d0122a;">Nueva solicitud de cotización — Laser Steel</h2>
         <table style="border-collapse:collapse; width:100%;">${rows}</table>
         ${mensaje ? `<p style="font-family:sans-serif;"><strong>Descripción del proyecto:</strong><br/>${escapeHtml(mensaje).replace(/\n/g, "<br/>")}</p>` : ""}
-        ${attachments.length ? `<p style="font-family:sans-serif; color:#666;">Se adjuntó el archivo: ${escapeHtml(attachments[0].filename)}</p>` : ""}
+        ${attachments.length ? `<p style="font-family:sans-serif; color:#666;">Archivos adjuntos: ${attachments.map((a) => escapeHtml(a.filename)).join(", ")}</p>` : ""}
       </div>
     `;
 

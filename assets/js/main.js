@@ -93,9 +93,15 @@
       }
 
       var fileInput = document.getElementById("archivo");
-      if (fileInput && fileInput.files[0] && fileInput.files[0].size > MAX_FILE_BYTES) {
-        showStatus("El archivo adjunto supera el límite de 4 MB. Por favor adjunte un archivo más liviano.", true);
-        return;
+      if (fileInput && fileInput.files.length) {
+        var totalBytes = 0;
+        for (var i = 0; i < fileInput.files.length; i++) {
+          totalBytes += fileInput.files[i].size;
+        }
+        if (totalBytes > MAX_FILE_BYTES) {
+          showStatus("Los archivos adjuntos superan el límite de 4 MB en total. Por favor adjunte archivos más livianos.", true);
+          return;
+        }
       }
 
       var originalBtnText = submitBtn.innerHTML;

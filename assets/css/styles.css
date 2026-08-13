@@ -599,37 +599,17 @@ summary:focus-visible {
   }
 }
 
-.hero-eyebrow {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.75);
-  padding: 3px 16px;
-  margin-bottom: 30px;
+.hero-logo-mark {
+  display: block;
+  height: 88px;
+  width: auto;
+  margin: 0 auto 34px;
 }
 
-.hero-eyebrow::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: var(--red-light);
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.25);
-  flex-shrink: 0;
-}
-
-.hero-eyebrow::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+@media (max-width: 640px) {
+  .hero-logo-mark {
+    height: 58px;
+  }
 }
 
 .hero h1 {
@@ -639,7 +619,7 @@ summary:focus-visible {
 
 .hero h1 em {
   font-style: normal;
-  color: var(--red-light);
+  color: #e72526;
 }
 
 .hero p.lead {
@@ -662,7 +642,6 @@ summary:focus-visible {
   grid-template-columns: repeat(4, 1fr);
   column-gap: 24px;
   row-gap: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
   padding-top: 24px;
 }
 
@@ -708,36 +687,6 @@ summary:focus-visible {
     border-left: none;
     padding-left: 0;
   }
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  color: rgba(255, 255, 255, 0.7);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-family: var(--font-head);
-}
-
-.scroll-cue .line {
-  width: 1px;
-  height: 34px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent);
-  animation: scrollcue 1.8s ease-in-out infinite;
-}
-
-@keyframes scrollcue {
-  0% { transform: scaleY(0.2); transform-origin: top; opacity: 0.4;}
-  50% { transform: scaleY(1); transform-origin: top; opacity: 1;}
-  100% { transform: scaleY(0.2); transform-origin: bottom; opacity: 0.4;}
 }
 
 /* ---------- Page hero (interior pages) ---------- */
