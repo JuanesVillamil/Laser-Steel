@@ -1,4 +1,4 @@
-const { Resend } = require("resend");
+import { Resend } from "resend";
 
 // Destinatario de prueba mientras se valida el flujo.
 // Cuando el cliente confirme, cambiar a comercial@lasersteel.com.co
@@ -12,7 +12,7 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;");
 }
 
-module.exports = async function handler(request) {
+export async function POST(request) {
   if (request.method !== "POST") {
     return new Response(JSON.stringify({ error: "Método no permitido" }), {
       status: 405,
