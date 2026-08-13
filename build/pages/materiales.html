@@ -13,59 +13,51 @@
 
 <section class="materials">
   <div class="container">
-    <div class="material-grid">
-      <div class="material-card reveal">
+    <div class="material-grid" id="materialSelector">
+      <button type="button" class="material-card is-active reveal" aria-pressed="true"
+        data-num="01" data-title="Acero al Carbono" data-subtitle="Resistencia y versatilidad para aplicaciones industriales"
+        data-desc="Uno de los materiales más utilizados en la fabricación de componentes industriales gracias a su excelente comportamiento mecánico y amplia variedad de aplicaciones. Trabajamos con Cold Rolled (CR) y Hot Rolled (HR)."
+        data-apps="componentes estructurales, maquinaria, bastidores, soportes, equipos industriales.">
         <img src="{{ROOT}}assets/img/material-acero.jpg" alt="Acero al carbono cortado con láser" loading="lazy" />
         <div class="material-card-label"><h3>Acero al Carbono</h3><span>CR / HR</span></div>
-      </div>
-      <div class="material-card reveal">
+      </button>
+      <button type="button" class="material-card reveal" aria-pressed="false"
+        data-num="02" data-title="Acero Inoxidable" data-subtitle="Durabilidad y resistencia a la corrosión"
+        data-desc="Recomendado para proyectos donde se requiere una alta resistencia a ambientes corrosivos y una excelente presentación superficial."
+        data-apps="industria alimentaria, equipos médicos, arquitectura, mobiliario, componentes especiales.">
         <img src="{{ROOT}}assets/img/material-coldrol.jpg" alt="Acero inoxidable" loading="lazy" />
         <div class="material-card-label"><h3>Acero Inoxidable</h3><span>Resistencia a la corrosión</span></div>
-      </div>
-      <div class="material-card reveal">
+      </button>
+      <button type="button" class="material-card reveal" aria-pressed="false"
+        data-num="03" data-title="Aluminio" data-subtitle="Ligereza y desempeño"
+        data-desc="Combina bajo peso con una adecuada resistencia mecánica, convirtiéndose en una excelente alternativa para diferentes aplicaciones industriales."
+        data-apps="transporte, automatización, arquitectura, equipos industriales.">
         <img src="{{ROOT}}assets/img/material-aluminio.jpg" alt="Aluminio" loading="lazy" />
         <div class="material-card-label"><h3>Aluminio</h3><span>Ligereza y desempeño</span></div>
-      </div>
-      <div class="material-card reveal">
+      </button>
+      <button type="button" class="material-card reveal" aria-pressed="false"
+        data-num="04" data-title="Acero Galvanizado" data-subtitle="Protección contra la corrosión"
+        data-desc="El recubrimiento de zinc proporciona mayor resistencia frente a la oxidación, siendo una alternativa ampliamente utilizada para componentes expuestos a ambientes húmedos."
+        data-apps="gabinetes, cerramientos, infraestructura, sistemas eléctricos.">
         <img src="{{ROOT}}assets/img/material-hr.jpg" alt="Acero galvanizado" loading="lazy" />
         <div class="material-card-label"><h3>Acero Galvanizado</h3><span>Protección contra corrosión</span></div>
-      </div>
-      <div class="material-card reveal">
+      </button>
+      <button type="button" class="material-card reveal" aria-pressed="false"
+        data-num="05" data-title="Latón" data-subtitle="Precisión y excelente acabado"
+        data-desc="Utilizado cuando el proyecto requiere buena maquinabilidad y una apariencia superficial de alta calidad."
+        data-apps="componentes decorativos, elementos arquitectónicos, componentes eléctricos, piezas especiales.">
         <img src="{{ROOT}}assets/img/material-laton.jpg" alt="Latón" loading="lazy" />
         <div class="material-card-label"><h3>Latón</h3><span>Precisión y acabado</span></div>
-      </div>
+      </button>
     </div>
 
-    <div class="material-detail-grid" style="margin-top: 48px;">
-      <div class="material-detail-card reveal">
-        <h3>Acero al Carbono</h3>
-        <span class="subtitle">Resistencia y versatilidad para aplicaciones industriales</span>
-        <p>Uno de los materiales más utilizados en la fabricación de componentes industriales gracias a su excelente comportamiento mecánico y amplia variedad de aplicaciones. Trabajamos con Cold Rolled (CR) y Hot Rolled (HR).</p>
-        <p class="apps"><strong>Aplicaciones frecuentes:</strong> componentes estructurales, maquinaria, bastidores, soportes, equipos industriales.</p>
-      </div>
-      <div class="material-detail-card reveal">
-        <h3>Acero Inoxidable</h3>
-        <span class="subtitle">Durabilidad y resistencia a la corrosión</span>
-        <p>Recomendado para proyectos donde se requiere una alta resistencia a ambientes corrosivos y una excelente presentación superficial.</p>
-        <p class="apps"><strong>Aplicaciones frecuentes:</strong> industria alimentaria, equipos médicos, arquitectura, mobiliario, componentes especiales.</p>
-      </div>
-      <div class="material-detail-card reveal">
-        <h3>Aluminio</h3>
-        <span class="subtitle">Ligereza y desempeño</span>
-        <p>Combina bajo peso con una adecuada resistencia mecánica, convirtiéndose en una excelente alternativa para diferentes aplicaciones industriales.</p>
-        <p class="apps"><strong>Aplicaciones frecuentes:</strong> transporte, automatización, arquitectura, equipos industriales.</p>
-      </div>
-      <div class="material-detail-card reveal">
-        <h3>Acero Galvanizado</h3>
-        <span class="subtitle">Protección contra la corrosión</span>
-        <p>El recubrimiento de zinc proporciona mayor resistencia frente a la oxidación, siendo una alternativa ampliamente utilizada para componentes expuestos a ambientes húmedos.</p>
-        <p class="apps"><strong>Aplicaciones frecuentes:</strong> gabinetes, cerramientos, infraestructura, sistemas eléctricos.</p>
-      </div>
-      <div class="material-detail-card reveal">
-        <h3>Latón</h3>
-        <span class="subtitle">Precisión y excelente acabado</span>
-        <p>Utilizado cuando el proyecto requiere buena maquinabilidad y una apariencia superficial de alta calidad.</p>
-        <p class="apps"><strong>Aplicaciones frecuentes:</strong> componentes decorativos, elementos arquitectónicos, componentes eléctricos, piezas especiales.</p>
+    <div class="material-detail-panel" id="materialPanelWrap" style="margin-top: 40px;">
+      <div class="material-detail-inner" id="materialPanelInner">
+        <span class="material-detail-num" id="panelNum">01</span>
+        <h3 id="panelTitle">Acero al Carbono</h3>
+        <span class="subtitle" id="panelSubtitle">Resistencia y versatilidad para aplicaciones industriales</span>
+        <p id="panelDesc">Uno de los materiales más utilizados en la fabricación de componentes industriales gracias a su excelente comportamiento mecánico y amplia variedad de aplicaciones. Trabajamos con Cold Rolled (CR) y Hot Rolled (HR).</p>
+        <p class="apps"><strong>Aplicaciones frecuentes:</strong> <span id="panelApps">componentes estructurales, maquinaria, bastidores, soportes, equipos industriales.</span></p>
       </div>
     </div>
   </div>
