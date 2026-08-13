@@ -2,7 +2,7 @@ import { Resend } from "resend";
 
 // Destinatario de prueba mientras se valida el flujo.
 // Cuando el cliente confirme, cambiar a comercial@lasersteel.com.co
-const RECIPIENT = "Juanesvillamil@outlook.com";
+const RECIPIENT = "juanesvillamil@outlook.com";
 const MAX_FILE_BYTES = 4 * 1024 * 1024; // 4 MB — límite de Vercel Functions (Hobby)
 
 function escapeHtml(str) {
