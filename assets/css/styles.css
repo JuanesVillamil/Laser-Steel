@@ -352,6 +352,8 @@ summary:focus-visible {
   position: relative;
   padding: 6px 0;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .main-nav a::after {
@@ -478,6 +480,8 @@ summary:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
   color: var(--white);
   font-family: var(--font-head);
   font-size: 17px;
@@ -881,13 +885,10 @@ summary:focus-visible {
 .material-detail-inner {
   position: relative;
   display: grid;
-  grid-template-columns: 64px 220px 1fr;
-  grid-template-areas:
-    "num title desc"
-    "num sub  desc"
-    "num .    apps";
-  column-gap: 32px;
-  padding: 30px 0;
+  grid-template-columns: 300px 1fr;
+  column-gap: 56px;
+  align-items: start;
+  padding: 40px 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -896,60 +897,48 @@ summary:focus-visible {
   transform: translateY(8px);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 760px) {
   .material-detail-inner {
-    grid-template-columns: 44px 1fr;
-    grid-template-areas:
-      "num title"
-      "num sub"
-      "num desc"
-      "num apps";
-    row-gap: 6px;
+    grid-template-columns: 1fr;
+    row-gap: 18px;
   }
 }
 
-.material-detail-num {
-  grid-area: num;
-  font-family: var(--font-head);
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1.3px var(--grey-300);
-  align-self: start;
-  padding-top: 3px;
+.material-detail-rule {
+  display: block;
+  width: 44px;
+  height: 3px;
+  background: var(--red);
+  margin-bottom: 20px;
 }
 
 .material-detail-inner h3 {
-  grid-area: title;
-  font-size: 20px;
-  margin-bottom: 4px;
+  font-size: 26px;
+  margin-bottom: 8px;
 }
 
 .material-detail-inner .subtitle {
-  grid-area: sub;
   font-family: var(--font-mono);
   font-size: 12.5px;
   font-weight: 500;
   color: var(--red);
   text-transform: none;
   letter-spacing: 0.01em;
-  margin-bottom: 12px;
   display: block;
 }
 
 .material-detail-inner p {
-  grid-area: desc;
-  font-size: 15px;
+  font-size: 15.5px;
+  line-height: 1.65;
   color: var(--grey-700);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   max-width: none;
 }
 
 .material-detail-inner .apps {
-  grid-area: apps;
   font-size: 13.5px;
   color: var(--grey-500);
+  margin-bottom: 0;
 }
 
 .material-detail-inner .apps strong {
@@ -1814,7 +1803,7 @@ summary:focus-visible {
 }
 
 .why .section-tag::before {
-  background: var(--white);
+  display: none;
 }
 
 .why .section-head p {
@@ -1889,6 +1878,12 @@ summary:focus-visible {
 /* ---------- Sectors ---------- */
 .sectors {
   background: var(--grey-100);
+}
+
+/* When it directly follows the (grey) Aplicaciones/Services block, use white
+   so the two sections don't blend into one another. */
+.services + .sectors {
+  background: var(--white);
 }
 
 .sector-grid {

@@ -148,50 +148,61 @@
     });
 
     var buttons = selector.querySelectorAll(cardSelector);
+    var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    function activate(btn) {
+      if (btn.classList.contains("is-active")) return;
+
+      buttons.forEach(function (b) {
+        b.classList.remove("is-active");
+        b.setAttribute("aria-pressed", "false");
+      });
+      btn.classList.add("is-active");
+      btn.setAttribute("aria-pressed", "true");
+
+      var startHeight = panelWrap.offsetHeight;
+      panelWrap.style.height = startHeight + "px";
+      panelInner.classList.add("is-switching");
+
+      window.setTimeout(function () {
+        Object.keys(fieldEls).forEach(function (key) {
+          fieldEls[key].textContent = btn.dataset[key];
+        });
+        panelInner.classList.remove("is-switching");
+
+        panelWrap.style.height = "auto";
+        var newHeight = panelWrap.offsetHeight;
+        panelWrap.style.height = startHeight + "px";
+        panelWrap.offsetHeight; // force reflow
+
+        requestAnimationFrame(function () {
+          panelWrap.style.height = newHeight + "px";
+        });
+
+        panelWrap.addEventListener("transitionend", function handler(e) {
+          if (e.propertyName === "height") {
+            panelWrap.style.height = "auto";
+            panelWrap.removeEventListener("transitionend", handler);
+          }
+        });
+      }, 200);
+    }
 
     buttons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        if (btn.classList.contains("is-active")) return;
-
-        buttons.forEach(function (b) {
-          b.classList.remove("is-active");
-          b.setAttribute("aria-pressed", "false");
-        });
-        btn.classList.add("is-active");
-        btn.setAttribute("aria-pressed", "true");
-
-        var startHeight = panelWrap.offsetHeight;
-        panelWrap.style.height = startHeight + "px";
-        panelInner.classList.add("is-switching");
-
-        window.setTimeout(function () {
-          Object.keys(fieldEls).forEach(function (key) {
-            fieldEls[key].textContent = btn.dataset[key];
-          });
-          panelInner.classList.remove("is-switching");
-
-          panelWrap.style.height = "auto";
-          var newHeight = panelWrap.offsetHeight;
-          panelWrap.style.height = startHeight + "px";
-          panelWrap.offsetHeight; // force reflow
-
-          requestAnimationFrame(function () {
-            panelWrap.style.height = newHeight + "px";
-          });
-
-          panelWrap.addEventListener("transitionend", function handler(e) {
-            if (e.propertyName === "height") {
-              panelWrap.style.height = "auto";
-              panelWrap.removeEventListener("transitionend", handler);
-            }
-          });
-        }, 200);
+        activate(btn);
       });
+
+      // Desktop with a real mouse/trackpad: switch on hover too, no click needed.
+      if (canHover) {
+        btn.addEventListener("mouseenter", function () {
+          activate(btn);
+        });
+      }
     });
   }
 
   initSwapSelector("materialSelector", ".material-card", "materialPanelWrap", "materialPanelInner", {
-    num: "panelNum",
     title: "panelTitle",
     subtitle: "panelSubtitle",
     desc: "panelDesc",
