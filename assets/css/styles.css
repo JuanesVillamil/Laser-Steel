@@ -559,13 +559,17 @@ summary:focus-visible {
 
   .dropdown-menu {
     position: static;
-    display: flex;
+    display: none;
     margin-top: 0;
     background: transparent;
     border: none;
     box-shadow: none;
     align-items: center;
     padding: 0;
+  }
+
+  .nav-item.has-dropdown.is-open .dropdown-menu {
+    display: flex;
   }
 
   .dropdown-link {
