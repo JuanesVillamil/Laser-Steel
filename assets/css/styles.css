@@ -1293,6 +1293,64 @@ summary:focus-visible {
   to { transform: translateX(-50%); }
 }
 
+/* ---------- Clients strip ---------- */
+.clients {
+  background: var(--white);
+  padding: 48px 0;
+  border-bottom: 1px solid var(--grey-300);
+}
+
+.clients-tag {
+  display: block;
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+  margin-bottom: 28px;
+}
+
+.clients-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 44px;
+  row-gap: 28px;
+}
+
+.clients-logos img {
+  height: 44px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: opacity var(--transition);
+}
+
+.clients-logos img:hover {
+  opacity: 0.95;
+}
+
+@media (max-width: 640px) {
+  .clients {
+    padding: 36px 0;
+  }
+
+  .clients-logos {
+    column-gap: 36px;
+    row-gap: 22px;
+  }
+
+  .clients-logos img {
+    height: 32px;
+    max-width: 140px;
+  }
+}
+
 /* ---------- About ---------- */
 .about {
   background: var(--white);
