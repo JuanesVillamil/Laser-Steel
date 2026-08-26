@@ -594,13 +594,12 @@ summary:focus-visible {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
   align-items: center;
   color: var(--white);
   overflow: hidden;
   background: var(--black) url("../img/hero-sparks.jpg") center 65% / cover no-repeat;
+  padding-bottom: 62px;
 }
 
 .hero::before {
@@ -629,9 +628,9 @@ summary:focus-visible {
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 760px;
+  max-width: 820px;
   margin: 0 auto;
-  padding: 56px 56px 40px;
+  padding: 14px 32px 0;
   text-align: center;
 }
 
@@ -643,20 +642,20 @@ summary:focus-visible {
 
 .hero-logo-mark {
   display: block;
-  height: 88px;
+  height: 116px;
   width: auto;
-  margin: 0 auto 34px;
+  margin: 0 auto 50px;
 }
 
 @media (max-width: 640px) {
   .hero-logo-mark {
-    height: 58px;
+    height: 72px;
   }
 }
 
 .hero h1 {
-  font-size: clamp(34px, 4.8vw, 58px);
-  margin-bottom: 22px;
+  font-size: clamp(32px, 4vw, 46px);
+  margin-bottom: 28px;
 }
 
 .hero h1 em {
@@ -665,10 +664,10 @@ summary:focus-visible {
 }
 
 .hero p.lead {
-  font-size: clamp(17px, 1.8vw, 20px);
+  font-size: clamp(15px, 1.4vw, 18px);
   color: rgba(255, 255, 255, 0.85);
-  max-width: 600px;
-  margin: 0 auto 36px;
+  max-width: 580px;
+  margin: 0 auto 28px;
 }
 
 .hero-ctas {
@@ -676,15 +675,20 @@ summary:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
-  margin-bottom: 56px;
+  margin-bottom: 42px;
+}
+
+.hero .hero-ctas .btn {
+  padding: 10px 22px;
+  font-size: 14px;
 }
 
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 24px;
-  row-gap: 24px;
-  padding-top: 24px;
+  row-gap: 16px;
+  padding-top: 12px;
 }
 
 .hero-stat {
@@ -701,11 +705,11 @@ summary:focus-visible {
 .hero-stat strong {
   display: block;
   font-family: var(--font-head);
-  font-size: clamp(22px, 2.6vw, 30px);
+  font-size: clamp(19px, 2vw, 23px);
   color: var(--white);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .hero-stat span {
@@ -1266,7 +1270,7 @@ summary:focus-visible {
   background: var(--red);
   color: var(--white);
   overflow: hidden;
-  padding: 12px 0;
+  padding: 2px 0;
 }
 
 .marquee-track {
@@ -2394,7 +2398,7 @@ summary:focus-visible {
 .float-whatsapp {
   position: fixed;
   right: 24px;
-  bottom: 24px;
+  bottom: 60px;
   z-index: 900;
   width: 60px;
   height: 60px;
