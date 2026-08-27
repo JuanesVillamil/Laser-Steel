@@ -95,7 +95,7 @@ export async function POST(request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
-      from: "Laser Steel Web <onboarding@resend.dev>",
+      from: "Laser Steel <comercial@lasersteel.com.co>",
       to: RECIPIENT,
       replyTo: email,
       subject: `Nueva cotización — ${nombre}${empresa ? " (" + empresa + ")" : ""}`,
