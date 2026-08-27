@@ -1029,6 +1029,55 @@ summary:focus-visible {
   }
 }
 
+/* ---------- Industries showcase (dark card variant) ---------- */
+.sectors.industries-showcase {
+  background: var(--black);
+  background-image:
+    linear-gradient(180deg, rgba(208, 18, 42, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 15% 0%, rgba(208, 18, 42, 0.16), transparent 55%);
+}
+
+.industries-showcase .industry-grid {
+  row-gap: 20px;
+}
+
+.sectors.industries-showcase .industry-grid .industry-card {
+  border-top: none;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 30px 26px;
+  background: var(--grey-900);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), transform var(--transition), background var(--transition);
+}
+
+.sectors.industries-showcase .industry-grid .industry-card:hover {
+  border-color: rgba(208, 18, 42, 0.55);
+  background: #201f24;
+  transform: translateY(-4px);
+}
+
+.industries-showcase .industry-card .num {
+  -webkit-text-stroke: 1.6px var(--red-light);
+  font-size: 34px;
+  min-width: 46px;
+}
+
+.industries-showcase .industry-card h4 {
+  color: var(--white);
+}
+
+.industries-showcase .industry-card p {
+  color: var(--grey-300);
+}
+
+@media (max-width: 640px) {
+  .sectors.industries-showcase .industry-grid .industry-card {
+    padding: 24px 20px;
+  }
+}
+
 /* ---------- Projects gallery ---------- */
 .project-grid {
   display: grid;
