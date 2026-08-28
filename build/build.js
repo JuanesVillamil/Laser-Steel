@@ -182,5 +182,19 @@ fs.mkdirSync(OUT_DIR, { recursive: true });
 // Copy static assets as-is
 fs.cpSync(path.join(PROJECT_DIR, "assets"), path.join(OUT_DIR, "assets"), { recursive: true });
 
+// Copy robots.txt as-is
+fs.copyFileSync(path.join(PROJECT_DIR, "robots.txt"), path.join(OUT_DIR, "robots.txt"));
+
 PAGES.forEach(writePage);
+
+// Generate sitemap.xml from the same PAGES list so it never drifts out of sync
+const SITE_URL = "https://www.lasersteel.com.co";
+const sitemapUrls = PAGES.filter((p) => p.key !== "404")
+  .map((p) => `${SITE_URL}/${p.outDir ? p.outDir + "/" : ""}`)
+  .map((url) => `  <url><loc>${url}</loc></url>`)
+  .join("\n");
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls}\n</urlset>\n`;
+fs.writeFileSync(path.join(OUT_DIR, "sitemap.xml"), sitemap, "utf8");
+console.log("built: sitemap.xml, robots.txt");
+
 console.log(`\n${PAGES.length} páginas generadas en /dist.`);
