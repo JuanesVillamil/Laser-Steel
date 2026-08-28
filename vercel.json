@@ -6,5 +6,9 @@
       "memory": 512,
       "maxDuration": 15
     }
-  }
+  },
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/:page/index.html", "destination": "/:page/", "permanent": true }
+  ]
 }

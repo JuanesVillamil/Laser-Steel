@@ -11,23 +11,24 @@ const PROJECT_DIR = path.join(__dirname, "..");
 const OUT_DIR = path.join(PROJECT_DIR, "dist");
 const PARTIALS_DIR = path.join(__dirname, "partials");
 const PAGES_DIR = path.join(__dirname, "pages");
+const SITE_URL = "https://www.lasersteel.com.co";
 
 const NAV_ITEMS = [
-  { key: "home", label: "Inicio", href: "index.html" },
+  { key: "home", label: "Inicio", href: "" },
   {
     key: "servicios",
     label: "Servicios",
     dropdown: [
-      { key: "corte-laser", label: "Corte Láser de Metales", href: "corte-laser/index.html" },
-      { key: "plegado-cnc", label: "Plegado CNC", href: "plegado-cnc/index.html" },
+      { key: "corte-laser", label: "Corte Láser de Metales", href: "corte-laser/" },
+      { key: "plegado-cnc", label: "Plegado CNC", href: "plegado-cnc/" },
     ],
   },
-  { key: "materiales", label: "Materiales", href: "materiales/index.html" },
-  { key: "capacidad-instalada", label: "Capacidad", href: "capacidad-instalada/index.html" },
-  { key: "industrias", label: "Industrias", href: "industrias/index.html" },
-  { key: "proyectos", label: "Proyectos", href: "proyectos/index.html" },
-  { key: "nosotros", label: "Nosotros", href: "nosotros/index.html" },
-  { key: "cotizar", label: "Contáctenos", href: "cotizar/index.html" },
+  { key: "materiales", label: "Materiales", href: "materiales/" },
+  { key: "capacidad-instalada", label: "Capacidad", href: "capacidad-instalada/" },
+  { key: "industrias", label: "Industrias", href: "industrias/" },
+  { key: "proyectos", label: "Proyectos", href: "proyectos/" },
+  { key: "nosotros", label: "Nosotros", href: "nosotros/" },
+  { key: "cotizar", label: "Contáctenos", href: "cotizar/" },
 ];
 
 const PAGES = [
@@ -134,7 +135,8 @@ function buildNav(activeKey) {
         </div>
       </div>`;
     }
-    return `<a href="{{ROOT}}${item.href}" class="${item.key === activeKey ? "active" : ""}">${item.label}</a>`;
+    const href = item.key === "home" ? "/" : `{{ROOT}}${item.href}`;
+    return `<a href="${href}" class="${item.key === activeKey ? "active" : ""}">${item.label}</a>`;
   }).join("\n      ");
 }
 
@@ -154,6 +156,8 @@ function assemble(page) {
   // page alone must use an absolute, domain-root-relative prefix.
   const root = page.key === "404" ? "/" : rootPrefix(page.outDir);
   const nav = buildNav(page.key);
+  const canonical = `${SITE_URL}/${page.outDir ? page.outDir + "/" : ""}`;
+  const robots = page.key === "404" ? '<meta name="robots" content="noindex" />' : "";
 
   let html = head + header + content + footer;
 
@@ -161,6 +165,8 @@ function assemble(page) {
     .split("{{TITLE}}").join(page.title)
     .split("{{DESCRIPTION}}").join(page.description)
     .split("{{NAV_LINKS}}").join(nav)
+    .split("{{CANONICAL}}").join(canonical)
+    .split("{{ROBOTS}}").join(robots)
     .split("{{ROOT}}").join(root);
 
   return html;
@@ -188,7 +194,6 @@ fs.copyFileSync(path.join(PROJECT_DIR, "robots.txt"), path.join(OUT_DIR, "robots
 PAGES.forEach(writePage);
 
 // Generate sitemap.xml from the same PAGES list so it never drifts out of sync
-const SITE_URL = "https://www.lasersteel.com.co";
 const sitemapUrls = PAGES.filter((p) => p.key !== "404")
   .map((p) => `${SITE_URL}/${p.outDir ? p.outDir + "/" : ""}`)
   .map((url) => `  <url><loc>${url}</loc></url>`)
