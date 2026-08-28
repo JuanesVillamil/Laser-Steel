@@ -148,7 +148,11 @@ function assemble(page) {
   const footer = read(path.join(PARTIALS_DIR, "footer.html"));
   const content = read(path.join(PAGES_DIR, page.contentFile));
 
-  const root = rootPrefix(page.outDir);
+  // The 404 page is served by Vercel for any unmatched URL (e.g. old indexed
+  // links like /portafolio or /contactenos), often several path segments deep.
+  // A relative ROOT would then resolve assets against that broken URL, so this
+  // page alone must use an absolute, domain-root-relative prefix.
+  const root = page.key === "404" ? "/" : rootPrefix(page.outDir);
   const nav = buildNav(page.key);
 
   let html = head + header + content + footer;
