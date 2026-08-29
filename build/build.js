@@ -21,6 +21,8 @@ const NAV_ITEMS = [
     dropdown: [
       { key: "corte-laser", label: "Corte Láser de Metales", href: "corte-laser/" },
       { key: "plegado-cnc", label: "Plegado CNC", href: "plegado-cnc/" },
+      { key: "fabricacion-piezas-metalicas", label: "Fabricación de Piezas Metálicas", href: "fabricacion-piezas-metalicas/" },
+      { key: "soluciones-metalmecanicas-integrales", label: "Soluciones Metalmecánicas Integrales", href: "soluciones-metalmecanicas-integrales/" },
     ],
   },
   { key: "materiales", label: "Materiales", href: "materiales/" },
@@ -55,6 +57,22 @@ const PAGES = [
     title: "Plegado CNC de Metales para Componentes de Alta Precisión | Laser Steel",
     description:
       "Plegado CNC de láminas metálicas con precisión, repetibilidad y calidad para aplicaciones industriales. Fabricación bajo plano.",
+  },
+  {
+    key: "fabricacion-piezas-metalicas",
+    outDir: "fabricacion-piezas-metalicas",
+    contentFile: "fabricacion-piezas-metalicas.html",
+    title: "Fabricación de Piezas Metálicas a Medida | Laser Steel",
+    description:
+      "Fabricación de piezas metálicas bajo plano combinando corte láser y plegado CNC en un solo proceso. Precisión, acabado y cumplimiento para la industria.",
+  },
+  {
+    key: "soluciones-metalmecanicas-integrales",
+    outDir: "soluciones-metalmecanicas-integrales",
+    contentFile: "soluciones-metalmecanicas-integrales.html",
+    title: "Soluciones Metalmecánicas Integrales | Laser Steel",
+    description:
+      "Acompañamiento integral desde el análisis del plano hasta la entrega: corte, plegado, ensamble y asesoría técnica para proyectos metalmecánicos completos.",
   },
   {
     key: "capacidad-instalada",
