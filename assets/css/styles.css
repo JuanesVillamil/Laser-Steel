@@ -872,16 +872,16 @@ summary:focus-visible {
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 14px;
 }
 
 .tag-list span {
   background: var(--grey-100);
   border: 1px solid var(--grey-300);
   color: var(--grey-900);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
-  padding: 8px 16px;
+  padding: 12px 22px;
   border-radius: 999px;
 }
 
