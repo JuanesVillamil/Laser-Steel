@@ -2028,6 +2028,17 @@ summary:focus-visible {
   background: var(--white);
 }
 
+/* Manual override for pages that need a specific alternating background
+   sequence regardless of which section class comes next (e.g. .about
+   immediately followed by .materials, which are both white by default). */
+.alt-grey {
+  background: var(--grey-100) !important;
+}
+
+.alt-white {
+  background: var(--white) !important;
+}
+
 .sector-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
