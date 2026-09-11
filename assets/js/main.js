@@ -70,6 +70,29 @@
     yearEl.textContent = new Date().getFullYear();
   }
 
+  /* ---------- GA4 commercial events ---------- */
+  function trackEvent(name, params) {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", name, params || {});
+    }
+  }
+
+  // Track direct contact clicks. Event names follow the client's GA4 requirement.
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest ? e.target.closest("a") : null;
+    if (!link) return;
+
+    var href = (link.getAttribute("href") || "").toLowerCase();
+
+    if (href.indexOf("https://wa.me/") === 0 || href.indexOf("whatsapp") !== -1) {
+      trackEvent("generate_lead_whatsapp");
+    } else if (href.indexOf("tel:") === 0) {
+      trackEvent("click_phone");
+    } else if (href.indexOf("mailto:") === 0) {
+      trackEvent("click_email");
+    }
+  });
+
   /* ---------- Quote form (sends via /api/send-quote, with file attachment) ---------- */
   var form = document.getElementById("quoteForm");
   var submitBtn = document.getElementById("submitBtn");
@@ -93,7 +116,8 @@
       }
 
       var fileInput = document.getElementById("archivo");
-      if (fileInput && fileInput.files.length) {
+      var hasFiles = !!(fileInput && fileInput.files.length);
+      if (hasFiles) {
         var totalBytes = 0;
         for (var i = 0; i < fileInput.files.length; i++) {
           totalBytes += fileInput.files[i].size;
@@ -120,6 +144,13 @@
         .then(function (result) {
           if (result.ok) {
             showStatus("¡Solicitud enviada! Nuestro equipo se pondrá en contacto pronto.", false);
+
+            // Fire lead events only after the API confirms successful delivery.
+            trackEvent("generate_lead_quote");
+            if (hasFiles) {
+              trackEvent("generate_lead_file");
+            }
+
             form.reset();
           } else {
             showStatus(result.data.error || "No se pudo enviar la solicitud. Intenta por WhatsApp.", true);
