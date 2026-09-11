@@ -8,6 +8,9 @@
     }
   },
   "redirects": [
+    { "source": "/cotizar/index.html", "destination": "/contactenos/", "permanent": true },
+    { "source": "/cotizar/", "destination": "/contactenos/", "permanent": true },
+    { "source": "/cotizar", "destination": "/contactenos/", "permanent": true },
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/:page/index.html", "destination": "/:page/", "permanent": true }
   ]

@@ -30,7 +30,7 @@ const NAV_ITEMS = [
   { key: "industrias", label: "Industrias", href: "industrias/" },
   { key: "proyectos", label: "Proyectos", href: "proyectos/" },
   { key: "nosotros", label: "Nosotros", href: "nosotros/" },
-  { key: "cotizar", label: "Contáctenos", href: "cotizar/" },
+  { key: "contactenos", label: "Contáctenos", href: "contactenos/" },
 ];
 
 const PAGES = [
@@ -115,9 +115,9 @@ const PAGES = [
       "Experiencia, compromiso y una forma de trabajar orientada a relaciones de largo plazo. Conozca la historia y los principios de Laser Steel S.A.S.",
   },
   {
-    key: "cotizar",
-    outDir: "cotizar",
-    contentFile: "cotizar.html",
+    key: "contactenos",
+    outDir: "contactenos",
+    contentFile: "contactenos.html",
     title: "Solicitar Cotización | Laser Steel S.A.S.",
     description:
       "Envíenos su plano o requerimiento técnico y reciba una cotización ajustada a las necesidades de su proyecto.",
