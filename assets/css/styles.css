@@ -642,14 +642,14 @@ summary:focus-visible {
 
 .hero-logo-mark {
   display: block;
-  height: 116px;
+  height: 140px;
   width: auto;
   margin: 0 auto 50px;
 }
 
 @media (max-width: 640px) {
   .hero-logo-mark {
-    height: 72px;
+    height: 86px;
   }
 }
 
