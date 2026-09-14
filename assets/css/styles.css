@@ -644,7 +644,7 @@ summary:focus-visible {
   display: block;
   height: 140px;
   width: auto;
-  margin: 0 auto 50px;
+  margin: 0 auto 22px;
 }
 
 @media (max-width: 640px) {
