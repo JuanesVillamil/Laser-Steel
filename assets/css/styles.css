@@ -766,6 +766,99 @@ summary:focus-visible {
   filter: blur(10px);
 }
 
+/* Photo variants: real photography as the hero background for each inner
+   page, with the same dark scrim used sitewide so the white text stays
+   legible. Each page gets its own background-image; the scrim gradient,
+   sizing and hidden decorative pseudo-elements are shared. */
+.page-hero--corte-laser,
+.page-hero--plegado-cnc,
+.page-hero--fabricacion-piezas,
+.page-hero--soluciones-integrales,
+.page-hero--materiales,
+.page-hero--capacidad,
+.page-hero--industrias,
+.page-hero--proyectos,
+.page-hero--nosotros {
+  background-size: cover;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+}
+
+.page-hero--corte-laser::before,
+.page-hero--plegado-cnc::before,
+.page-hero--fabricacion-piezas::before,
+.page-hero--soluciones-integrales::before,
+.page-hero--materiales::before,
+.page-hero--capacidad::before,
+.page-hero--industrias::before,
+.page-hero--proyectos::before,
+.page-hero--nosotros::before,
+.page-hero--corte-laser::after,
+.page-hero--plegado-cnc::after,
+.page-hero--fabricacion-piezas::after,
+.page-hero--soluciones-integrales::after,
+.page-hero--materiales::after,
+.page-hero--capacidad::after,
+.page-hero--industrias::after,
+.page-hero--proyectos::after,
+.page-hero--nosotros::after {
+  display: none;
+}
+
+.page-hero--corte-laser {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-corte-laser.jpg");
+}
+
+.page-hero--plegado-cnc {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-plegado-cnc.jpg");
+}
+
+.page-hero--fabricacion-piezas {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-fabricacion-piezas.jpg");
+}
+
+.page-hero--soluciones-integrales {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-soluciones-integrales.jpg");
+}
+
+.page-hero--materiales {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-materiales.jpg");
+}
+
+.page-hero--capacidad {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-capacidad.jpg");
+}
+
+.page-hero--industrias {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-industrias.jpg");
+}
+
+.page-hero--proyectos {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-proyectos.jpg");
+}
+
+.page-hero--nosotros {
+  background-image:
+    linear-gradient(135deg, rgba(14, 14, 16, 0.86) 0%, rgba(30, 8, 10, 0.78) 100%),
+    url("../img/page-hero-nosotros.jpg");
+}
+
 .page-hero-inner {
   position: relative;
   z-index: 1;
