@@ -190,6 +190,59 @@ function assemble(page) {
   return html;
 }
 
+// Personal digital business cards, published at /<slug>/ (QR codes already
+// printed point to these exact URLs — do not change the slugs). Each card ships
+// its client-provided .vcf, copied verbatim from cards/<slug>/.
+const GA_ID = "G-1SZ7FBPXNQ";
+const CARDS = [
+  {
+    slug: "carlos-rubiano",
+    name: "Carlos Rubiano",
+    firstName: "Carlos",
+    role: "Gerente",
+    phone: "+573103438134",
+    phoneDisplay: "+57 310 343 8134",
+    email: "carlosrubiano@lasersteel.com.co",
+    vcf: "Carlos_Rubiano_Laser_Steel.vcf",
+  },
+  {
+    slug: "laura-garzon",
+    name: "Laura Garzón",
+    firstName: "Laura",
+    role: "Gerente Comercial",
+    phone: "+573163709784",
+    phoneDisplay: "+57 316 370 9784",
+    email: "lauragarzon@lasersteel.com.co",
+    vcf: "Laura_Garzon_Laser_Steel.vcf",
+  },
+];
+
+function writeCard(card) {
+  const waText = `Hola ${card.firstName}, quiero solicitar una cotización con Laser Steel.`;
+  const tokens = {
+    "{{GA_ID}}": GA_ID,
+    "{{SITE_URL}}": SITE_URL,
+    "{{URL}}": `${SITE_URL}/${card.slug}/`,
+    "{{SLUG}}": card.slug,
+    "{{NAME}}": card.name,
+    "{{ROLE}}": card.role,
+    "{{PHONE}}": card.phone,
+    "{{PHONE_DISPLAY}}": card.phoneDisplay,
+    "{{EMAIL}}": card.email,
+    "{{VCF}}": card.vcf,
+    "{{WA_URL}}": `https://wa.me/${card.phone.replace("+", "")}?text=${encodeURIComponent(waText)}`,
+  };
+  let html = read(path.join(PARTIALS_DIR, "card.html"));
+  for (const [token, value] of Object.entries(tokens)) {
+    html = html.split(token).join(value);
+  }
+  const outDir = path.join(OUT_DIR, card.slug);
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, "index.html"), html, "utf8");
+  fs.copyFileSync(path.join(PROJECT_DIR, "cards", card.slug, card.vcf), path.join(outDir, card.vcf));
+  console.log("built:", `${card.slug}/index.html + ${card.vcf}`);
+}
+
 function writePage(page) {
   const html = assemble(page);
   const outDir = path.join(OUT_DIR, page.outDir);
@@ -210,6 +263,7 @@ fs.cpSync(path.join(PROJECT_DIR, "assets"), path.join(OUT_DIR, "assets"), { recu
 fs.copyFileSync(path.join(PROJECT_DIR, "robots.txt"), path.join(OUT_DIR, "robots.txt"));
 
 PAGES.forEach(writePage);
+CARDS.forEach(writeCard);
 
 // Generate sitemap.xml from the same PAGES list so it never drifts out of sync
 const sitemapUrls = PAGES.filter((p) => p.key !== "404")

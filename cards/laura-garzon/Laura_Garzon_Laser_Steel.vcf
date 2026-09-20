@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Garzón;Laura;;;
+FN:Laura Garzón
+ORG:Laser Steel
+TITLE:Gerente Comercial
+TEL;TYPE=CELL,VOICE:+57 316 370 9784
+EMAIL;TYPE=INTERNET:lauragarzon@lasersteel.com.co
+URL:https://www.lasersteel.com.co/
+ADR;TYPE=WORK:;;Bogotá;Bogotá D.C.;;;Colombia
+NOTE:Soluciones metalmecánicas de precisión
+END:VCARD

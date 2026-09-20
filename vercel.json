@@ -7,6 +7,12 @@
       "maxDuration": 15
     }
   },
+  "headers": [
+    {
+      "source": "/(.*)\\.vcf",
+      "headers": [{ "key": "Content-Type", "value": "text/vcard; charset=utf-8" }]
+    }
+  ],
   "redirects": [
     { "source": "/cotizar/index.html", "destination": "/contactenos/", "permanent": true },
     { "source": "/cotizar/", "destination": "/contactenos/", "permanent": true },
